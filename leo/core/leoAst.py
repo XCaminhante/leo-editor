@@ -3709,7 +3709,7 @@ class TokenOrderGenerator:
     #@+node:ekr.20250731051236.1: *6* tog.TemplateStr
     # New in Python 3.14:
     # TemplateStr(expr* values)
-    # Neither implicit nor explicit contcantenation with str is allowed.
+    # Neither implicit nor explicit concatenation with str is allowed.
 
     def do_TemplateStr(self, node: Node) -> None:
 
