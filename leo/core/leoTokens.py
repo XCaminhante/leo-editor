@@ -1098,7 +1098,17 @@ class TokenBasedOrange:  # Orange is the new Black.
     def do_name(self) -> None:
         """Handle a name token."""
         name = self.input_token.value
-        if name in self.operator_keywords:
+
+        # #4420: Special case for *_
+        if name == '_':
+            prev_token = self.input_tokens[self.index - 1]
+            if prev_token.kind == 'op' and prev_token.value == '*':
+                self.pending_ws = ''
+                self.gen_token('word', name)
+                self.gen_blank()
+            else:
+                self.gen_word(name)
+        elif name in self.operator_keywords:
             self.gen_word_op(name)
         else:
             self.gen_word(name)
