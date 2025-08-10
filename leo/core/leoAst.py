@@ -2811,7 +2811,7 @@ class Tokenizer:
         # tok_s is corresponding string in the line.
         tok_s = contents[s_offset:e_offset]
         # Add any preceding between-token whitespace.
-        ws = contents[self.prev_offset:s_offset]
+        ws = contents[self.prev_offset : s_offset]
         if ws:
             # No need for a hook.
             self.add_token('ws', five_tuple, line, s_row, ws)

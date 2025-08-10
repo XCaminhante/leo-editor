@@ -466,7 +466,7 @@ class Tokenizer:
         # tok_s is corresponding string in the line.
         tok_s = contents[s_offset:e_offset]
         # Add any preceding between-token whitespace.
-        ws = contents[self.prev_offset:s_offset]
+        ws = contents[self.prev_offset : s_offset]
         if ws:
             # Create the 'ws' pseudo-token.
             self.add_token('ws', line, line_number, ws)
@@ -1098,7 +1098,17 @@ class TokenBasedOrange:  # Orange is the new Black.
     def do_name(self) -> None:
         """Handle a name token."""
         name = self.input_token.value
-        if name in self.operator_keywords:
+
+        # #4420: Special case for *_
+        if name == '_':
+            prev_token = self.input_tokens[self.index - 1]
+            if prev_token.kind == 'op' and prev_token.value == '*':
+                self.pending_ws = ''
+                self.gen_token('word', name)
+                self.gen_blank()
+            else:
+                self.gen_word(name)
+        elif name in self.operator_keywords:
             self.gen_word_op(name)
         else:
             self.gen_word(name)
@@ -1737,11 +1747,7 @@ class TokenBasedOrange:  # Orange is the new Black.
             kind, value = token.kind, token.value
             if kind not in self.insignificant_kinds:
                 if kind == 'op':
-                    if value == '.':
-                        # Ignore '.' tokens and any preceding 'name' token.
-                        if prev and prev.kind == 'name':  # pragma: no cover
-                            inter_colon_tokens -= 1
-                    elif value == ':':
+                    if value == ':':
                         inter_colon_tokens = 0
                     elif value in '-+':
                         # Ignore unary '-' or '+' tokens.
