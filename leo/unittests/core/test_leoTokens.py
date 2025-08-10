@@ -730,8 +730,8 @@ class TestTokenBasedOrange(BaseTest):
 
         # Except where noted, all entries are expected values...
         table = (
-            ### Duplicate entry to fail first.
-            """f(a[1 + 2])""",
+            # #4420
+            """default, *_ = node.infer()""",  # From pylint.
 
             # Assignments...
             """a = b * c""",
