@@ -1177,8 +1177,8 @@ class LeoImportCommands:
             # Change the node.
             bunch = u.beforeChangeBody(p)
             block = blocks.pop(0)
-            head = lines[block.start:block.end]
-            tail = lines[block.end:]
+            head = lines[block.start : block.end]
+            tail = lines[block.end :]
             p.b = ''.join(head)
             p.h = self.compute_imported_headline(importer, head, p)
             u.afterChangeBody(p, undoType, bunch)
