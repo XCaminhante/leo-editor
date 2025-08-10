@@ -845,6 +845,9 @@ class TestTokenBasedOrange(BaseTest):
             # In all cases, the differences make leoTokens.py *more*
             # compatible with Black than leoAst.py!
 
+                # #4420:
+                """base_name = ".".join(package.split(".", self.depth)[: self.depth])""",
+
                 # From leoAst.py.
                 """val = val[:i] + '# ' + val[i + 1 :]\n""",
                 # From leoApp.py.
@@ -852,6 +855,7 @@ class TestTokenBasedOrange(BaseTest):
                     for name in rf.getRecentFiles()[:n]:
                         pass
                 """,
+
                 # From leoUndo.py.
                 """s.extend(body_lines[-trailing:])\n""",
                 # From leoTokens.py.
@@ -862,7 +866,7 @@ class TestTokenBasedOrange(BaseTest):
                         e = line1[n1:-n2].strip()
                 """,
 
-            # Legacy tests...
+                # Legacy tests...
                 """a[:-1]""",
                 """a[: 1 if True else 2 :]""",
                 """a[1 : 1 + 2]""",
