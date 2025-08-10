@@ -845,8 +845,9 @@ class TestTokenBasedOrange(BaseTest):
             # In all cases, the differences make leoTokens.py *more*
             # compatible with Black than leoAst.py!
 
-                # #4420:
+                # #4420: From pylint.
                 """base_name = ".".join(package.split(".", self.depth)[: self.depth])""",
+                """ws = contents[self.prev_offset : s_offset]""",  # Follow-on test.
 
                 # From leoAst.py.
                 """val = val[:i] + '# ' + val[i + 1 :]\n""",
