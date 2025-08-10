@@ -218,7 +218,7 @@ class Undoer:
         else:
             # Push the bunch.
             u.bead += 1
-            u.beads[u.bead:] = [bunch]
+            u.beads[u.bead :] = [bunch]
             # Recalculate the menu labels.
             u.setUndoTypes()
         if 'undo' in g.app.debug:  # pragma: no cover
@@ -418,7 +418,7 @@ class Undoer:
         if 0:
             # Push the bunch.
             u.bead += 1
-            u.beads[u.bead:] = [bunch]
+            u.beads[u.bead :] = [bunch]
         # Recalculate the menu labels.
         u.setUndoTypes()
     #@+node:ekr.20050315134017.2: *5* u.afterChangeNodeContents
@@ -501,7 +501,7 @@ class Undoer:
         bunch.newMarked = p.isMarked()
         # Push the bunch.
         u.bead += 1
-        u.beads[u.bead:] = [bunch]
+        u.beads[u.bead :] = [bunch]
         # Recalculate the menu labels.
         u.setUndoTypes()
     #@+node:ekr.20231225132413.1: *5* u.afterChangeUA
@@ -622,7 +622,7 @@ class Undoer:
         bunch.followingSibs = followingSibs
         # Push the bunch.
         u.bead += 1
-        u.beads[u.bead:] = [bunch]
+        u.beads[u.bead :] = [bunch]
         # Recalculate the menu labels.
         u.setUndoTypes()
     #@+node:ekr.20050411193627.9: *5* u.afterInsertNode
@@ -706,7 +706,7 @@ class Undoer:
         bunch.children = children
         # Push the bunch.
         u.bead += 1
-        u.beads[u.bead:] = [bunch]
+        u.beads[u.bead :] = [bunch]
         # Recalculate the menu labels.
         u.setUndoTypes()
     #@+node:ekr.20080425060424.2: *5* u.afterSort
@@ -751,7 +751,7 @@ class Undoer:
         bunch.items = []
         # Push the bunch.
         u.bead += 1
-        u.beads[u.bead:] = [bunch]
+        u.beads[u.bead :] = [bunch]
     #@+node:ekr.20201107145859.1: *5* u.beforeChangeHeadline
     def beforeChangeHeadline(self, p: Position) -> g.Bunch:
         """
@@ -889,7 +889,7 @@ class Undoer:
         bunch.sortChildren = sortChildren  # A bool
         # Push the bunch.
         u.bead += 1
-        u.beads[u.bead:] = [bunch]
+        u.beads[u.bead :] = [bunch]
         return bunch
     #@+node:ekr.20050318085432.2: *5* u.createCommonBunch
     def createCommonBunch(self, p: Position) -> g.Bunch:
